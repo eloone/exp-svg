@@ -2,7 +2,7 @@
 <!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.0//EN"
     "http://www.w3.org/TR/2001/REC-SVG-20010904/DTD/svg10.dtd">
   
-<svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="240px" height="240px" viewBox="0 0 240 240">
+<svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="100%" height="100%" >
 <title>SVG paths</title>
   <g style="stroke: black; fill: none;">
     <!-- rectangle; all four lines -->
@@ -23,5 +23,43 @@
     
     <path d="M 12 24 h 15 v 25 h -15 z"/>
     <path d="M12 24h15v25h-15z"/> <!-- shorter -->
+    <!--elliptical arc
+    A :  absolute coordinates
+    A is followed by 7 parameters :
+  1,2. x,y-radius of the ellipse
+    3. x-axis-rotation
+    4. large-arc-flag = 1 / large or 0 / small
+    5. sweep flag = 1 / up (negative direction) or 0 down (positive direction)
+  6,7. x,y coordinate of the endpoint
+    -->
+    <path d="M 125,75 A100,50 0 0,0 225,125"/> 
+    <!-- gray drop shadow -->
+<ellipse cx="154" cy="154" rx="150" ry="120" style="fill: #999999;"/>
+
+<!-- light blue ellipse -->
+<ellipse cx="152" cy="152" rx="150" ry="120" style="fill: #cceeff;"/>
+
+<!-- large light red semicircle fills upper half,
+     followed by small light red semicircle that dips into
+     lower left half of symbol -->
+<path d="M 302 152 A 150 120, 0, 1, 0, 2 152
+    A 75 60, 0, 1, 0, 152 152" style="fill: #ffcccc;"/>
+
+<!-- light blue semicircle rises into upper right half of symbol -->
+<path d="M 152 152 A 75 60, 0, 1, 1, 302 152" style="fill: #cceeff;"/>
   </g>
+  
+  
+  <!--curves-->
+  <!--quadratic-->
+  <!-- Q is followed by the coordinates of the control point + the endpoint-->
+  <!-- use T to smoothly join  2 curves T is followed by the next endpoint -->
+  <path d="M100 75 Q 240 30, 300 120" style="stroke: black; fill: none;"/>
+  <path d="M100 100 Q 80 30, 200 200 T 300 80"/>
+  <!--cubic-->
+  <!--C is followed by control point for start point, control point for endpoint, endpoint-->
+  <path d="M20 80 C 50 20, 150 60, 200 120"
+    style="stroke: red; fill: none;"/>
+  <!-- S to smooth followed by control point for next ending point + next endpoint-->
+  <path d="M30 100 C 50 30, 70 50, 100 100 S 150 40, 200 80"  style="stroke: blue; fill: none;"/>
 </svg>
