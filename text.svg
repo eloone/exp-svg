@@ -1,0 +1,172 @@
+<?xml version="1.0"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.0//EN"
+    "http://www.w3.org/TR/2001/REC-SVG-20010904/DTD/svg10.dtd">
+  
+<svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="100%" height="1500">
+<title>Text</title>
+<defs>
+    <path id="curvepath"
+    d="M30 40 C 50 10, 70 10, 120 40 S 150 0, 200 40"
+    style="stroke: gray; fill: none;"/>
+
+<path id="round-corner"
+    d="M250 30 L 300 30 A 30 30 0 0 1 330 60 L 330 110"
+    style="stroke: gray; fill: none;"/>
+
+<path id="sharp-corner"
+    d="M 30 110 100 110 100 160"
+    style="stroke: gray; fill: none;"/>
+    
+<path id="discontinuous" 
+    d="M 150 110 A 40 30 0 1 0 230 110 M 250 110 270 140"
+    style="stroke: gray; fill: none;"/>
+    <path id="short-corner" transform="translate(40,40)"
+    d="M0 0 L 30 0 A 30 30 0 0 1 60 30 L 60 60"
+    style="stroke: gray; fill: none;"/>
+
+<path id="long-corner" transform="translate(140,40)"
+    d="M0 0 L 50 0 A 30 30 0 0 1 80 30 L 80 80"
+    style="stroke: gray; fill: none;"/>
+</defs>
+
+<g style="font-size: 14pt;">
+<path d="M 100 10 100 100" style="stroke: gray; fill: none;"/>
+<text x="100" y="30" style="text-anchor: start">Start</text>
+<text x="100" y="60" style="text-anchor: middle">Middle</text>
+<text x="100" y="90" style="text-anchor: end">End</text>
+</g>
+
+<g transform="translate(0 50)">
+    <text x="10" y="30" style="font-size:12pt;">
+    F <tspan dy="4">a</tspan>
+    <tspan dy="8">l</tspan>
+    <tspan dy="12">l</tspan>
+</text>
+</g>
+
+<text transform="translate(0 150)"  x="10" y="30" style="font-size:12pt;">
+    They dined on mince, and slices of quince,
+    <tspan x="20" y="50">Which they ate with a
+        runcible spoon;</tspan>
+    <tspan x="10" y="70">And hand in hand, on the edge
+        of the sand,</tspan>
+    <tspan x="20" y="90">They danced by the light of the moon.</tspan>
+</text>
+
+<text transform="translate(0 250)" x="30" y="30" style="font-size:14pt">
+    <tspan dx="0 4 -3 5 -4 6" dy="0 -3 7 3 -2 -8">Shaken</tspan> test
+</text>
+
+<g transform="translate(0 350)">
+    <text x="20" y="25" style="font-size: 12pt;">
+    C<tspan style="baseline-shift: sub;">12</tspan>
+    H<tspan style="baseline-shift: sub;">22</tspan>
+    O<tspan style="baseline-shift: sub;">11</tspan> (sugar)
+    </text>
+
+    <text x="20" y="70" style="font-size: 12pt;">
+    6.02 x 10<tspan baseline-shift="super">23</tspan>
+    (Avogadro's number)
+    </text>
+</g>
+
+<g transform="translate(0 450)" style="font-size: 14pt;">
+    <path d="M 20 10 20 70 M 220 10 220 70" style="stroke: gray;"/>
+    <text x="20" y="30" 
+        textLength="200" lengthAdjust="spacing">Two words</text>
+    <text x="20" y="60" 
+        textLength="200" lengthAdjust="spacingAndGlyphs">Two words</text>
+
+    <text x="20" y="90">Two words 
+        <tspan style="font-size: 10pt;">(normal length)</tspan></text>
+
+    <path d="M 20 100 20 170 M 100 100 100 170" style="stroke: gray;"/>
+    <text x="20" y="120" 
+        textLength="80" lengthAdjust="spacing">Two words</text>
+    <text x="20" y="160" 
+    textLength="80" lengthAdjust="spacingAndGlyphs">Two words</text>
+</g>
+<g transform="translate(0 650)" >
+    <text x="10" y="20" transform="rotate(90,10,20)">Rotated 90</text>
+    <text x="50" y="20" style="writing-mode: tb;">Writing Mode tb</text>
+    <text x="90" y="20" style="writing-mode: tb;
+    glyph-orientation-vertical: 0;">Vertical zero</text>
+</g>
+
+<g transform="translate(0 750)">
+    <text x="10" y="130">
+   This is 
+      <tspan style="direction: rtl; unicode-bidi: bidi-override;
+        font-weight: bold;">right-to-left</tspan> 
+   text.
+    </text>
+</g>
+<switch transform="translate(0 950)">
+    <g systemLanguage="en-UK">
+        <text x="10" y="30">A circle</text>
+        <text x="10" y="100">without colour.</text>
+    </g>
+    <g systemLanguage="en">
+        <text x="10" y="30">A circle</text>
+        <text x="10" y="100">without color.</text>
+    </g>
+    <g systemLanguage="es">
+        <text x="10" y="30">Un c&#xed;rculo</text>
+        <text x="10" y="100">sin color.</text>
+    </g>
+    <g systemLanguage="ru">
+        <text x="10" y="30">
+        &#x41a;&#x440;&#x443;&#x433;
+        </text>
+        <text x="10" y="100">&#x431;&#x435;&#x437;
+         &#x441;&#x432;&#x435;&#x442;&#x430;.</text>
+    </g>
+</switch>
+
+<g transform="translate(0, 1000)">
+    <use xlink:href="#curvepath"/>
+<text style="font-size: 12;">
+    <textPath xlink:href="#curvepath">
+    Following a cubic Bézier curve.
+    </textPath>
+</text>
+
+<use xlink:href="#round-corner"/>
+<text style="font-size: 12;">
+    <textPath xlink:href="#round-corner">
+    Going 'round the bend
+    </textPath>
+</text>
+
+<use xlink:href="#sharp-corner"/>
+<text style="font-size: 12;">
+    <textPath xlink:href="#sharp-corner">
+    Making a quick turn
+    </textPath>
+</text>
+
+<use xlink:href="#discontinuous"/>
+<text style="font-size: 12;">
+    <textPath xlink:href="#discontinuous">
+    Text along a broken path
+    </textPath>
+</text>
+</g>
+
+<g transform="translate(0, 1150)">
+    <use xlink:href="#short-corner"/> 
+<text style="font-size: 12;">
+    <textPath xlink:href="#short-corner">
+    This text is too long for the path.
+    </textPath>
+</text>
+
+<use xlink:href="#long-corner"/>  
+<text style="font-size: 12; text-anchor: middle;">
+    <textPath xlink:href="#long-corner" startOffset="50%">
+    centered
+    </textPath>
+</text>
+</g>
+
+</svg>
