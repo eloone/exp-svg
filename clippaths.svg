@@ -1,0 +1,70 @@
+<?xml version="1.0"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.0//EN"
+    "http://www.w3.org/TR/2001/REC-SVG-20010904/DTD/svg10.dtd">
+  
+<svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="100%" height="100%" >
+<title>SVG clips</title>
+ <defs>
+<clipPath id="circularPath" clipPathUnits="objectBoundingBox">
+    <circle cx="0.5" cy="0.5" r="0.5"/>
+</clipPath>
+
+<g id="shapes">
+<rect x="0" y="50" width="100" height="50" style="fill: #999;"/>
+<circle cx="25" cy="25" r="25" style="fill: #666;"/>
+<polygon points="30 0 80 0 80 100" style="fill: #ccc;"/>
+</g>
+
+<g id="words">
+<text  x="0"  y="19" style="font-size: 12;">
+<tspan x="0"  y="19">If you have form'd a circle</tspan>
+<tspan x="12" y="33">to go into,</tspan>
+<tspan x="0"  y="47">Go into it yourself</tspan>
+<tspan x="12" y="61">and see how you would do.</tspan>
+<tspan x="50" y="80">&#xad;William Blake</tspan>
+</text>
+</g>
+
+<clipPath id="curveClip">
+    <path id="curve1"
+        d="M5 55 C 25 5, 45 -25, 75 55, 85 85, 20 105, 40 55 Z"
+        style="stroke: black; fill: none;"/>
+</clipPath>
+
+<clipPath id="textClip">
+    <text id="text1" x="20" y="20" transform="rotate(60)"
+        style="font-size: 48pt; stroke: black; fill: none;">
+    CLIP
+    </text>
+</clipPath>
+
+<g id="shapes">
+<rect x="0" y="50" width="90" height="60" style="fill: #999;"/>
+<circle cx="25" cy="25" r="25" style="fill: #666;"/>
+<polygon points="30 0 80 0 80 100" style="fill: #ccc;"/>
+</g>
+</defs>
+
+<use xlink:href="#shapes" style="clip-path: url(#circularPath);" />
+<use xlink:href="#words" transform="translate(110,0)"
+    style="clip-path: url(#circularPath);"/>
+<g transform="translate(0,100)">    
+    <!-- draw with curved clip-path -->
+    <use xlink:href="#shapes" style="clip-path: url(#curveClip);" />
+
+    <g transform="translate(100,0)">
+        <use xlink:href="#shapes"/>
+        <use xlink:href="#curve1"/>   <!-- show clip path -->
+    </g>
+
+    <!-- draw with text as clip-path -->
+    <g transform="translate(0,150)">
+        <use xlink:href="#shapes" style="clip-path: url(#textClip);"/>
+    </g>
+
+    <g transform="translate(100,150)">
+        <use xlink:href="#shapes"/>
+        <use xlink:href="#text1"/>
+    </g>
+</g>
+</svg>
