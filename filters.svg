@@ -36,6 +36,65 @@
         <feMergeNode in="SourceGraphic"/>
     </feMerge>
 </filter>
+<filter id="sky-shadow" filterUnits="objectBoundingBox">
+    <feImage xlink:href="sky.png" result="sky"/>
+    <feGaussianBlur in="SourceAlpha" stdDeviation="2" result="blur"/>
+    <feOffset in="blur" dx="4" dy="4" result="offsetBlur"/>
+    <feMerge>
+        <feMergeNode in="sky"/>
+        <feMergeNode in="offsetBlur"/>
+        <feMergeNode in="SourceGraphic"/>
+    </feMerge>
+</filter>
+
+<!-- 
+linear
+slope  *  C +  intercept. The intercept provides a "base value" for the result; the slope is a simple scaling factor.
+
+gamma
+ <feFuncB type="gamma"
+        amplitude="1" exponent="0.2" offset="0"/>
+
+amplitude  *  C exponent  +  offset. The offset provides a "base value" for the result; the amplitude is a simple scaling factor, and exponent makes the result a curved line rather than a straight line. Since the color value is always between zero and one, the larger your exponent, the smaller the modified value will be. 
+
+<feFuncG type="table"
+    tableValues ="0.0, 0.5, 0.6, 0.85, 1.0"/>
+    
+<feFuncG type="discrete"
+    tableValues ="0.125 0.375 0.625 0.875"/>
+
+If you want to invert the range of color values for a channel (that is, change increasing values from a minimum to maximum into decreasing values from the maximum to the minimum), use this:
+<feFuncX type="table" 
+    tableValues="maximum 
+                  minimum"/>
+-->
+<filter id="brightness-shadow" filterUnits="objectBoundingBox">
+    <feImage xlink:href="sky.png" result="sky"/>
+    <feComponentTransfer in="sky" result="sky">
+        <feFuncB type="linear" slope="3" intercept="0"/>
+        <feFuncR type="linear" slope="1.5" intercept="0.2"/>
+        <feFuncG type="linear" slope="1.5" intercept="0.2"/>
+    </feComponentTransfer>
+    <feGaussianBlur in="SourceAlpha" stdDeviation="2" result="blur"/>
+    <feOffset in="blur" dx="4" dy="4" result="offsetBlur"/>
+    <feMerge>
+        <feMergeNode in="sky"/>
+        <feMergeNode in="offsetBlur"/>
+        <feMergeNode in="SourceGraphic"/>
+    </feMerge>
+</filter>
+
+<g id="flower" style="filter: url(#brightness-shadow)">
+    <image xlink:href="http://flowerpicturegallery.com/d/5298-2/Big+dark+pink+Lotus+Flower+photo.jpg"     
+    x="72" y="250"     
+    width="160" height="120"/> 
+</g>
+
+<g id="flower" style="filter: url(#sky-shadow)">
+    <image xlink:href="http://flowerpicturegallery.com/d/5298-2/Big+dark+pink+Lotus+Flower+photo.jpg"     
+    x="72" y="92"     
+    width="160" height="120"/> 
+</g>
 
 <text x="120" y="50"
     style="filter: url(#glow); fill: #f00; font-size:18;">
