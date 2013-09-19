@@ -67,6 +67,26 @@ If you want to invert the range of color values for a channel (that is, change i
 <feFuncX type="table" 
     tableValues="maximum 
                   minimum"/>
+                  
+                  
+<feComposite>
+
+<feComposite operator="over" in="A" in2="B"/>
+Produces the result of layering A over B, exactly as <feMergeNode> does. In fact, <feMergeNode> is really just a convenient shortcut for a <feComposite> element that specifies an over operation.
+<feComposite operator="in" in="A" in2="B"/>
+The result is the part of A that is within the boundaries of B. Don't confuse the name of this attribute value with the in attribute.
+<feComposite operator="out" in="A" in2="B"/>
+The result is the part of A that is outside the boundaries of B.
+<feComposite operator="atop" in="A" in2="B"/>
+The result is the part of A that is inside B, as well as the part of B outside A. To quote the article in which these operators were first defined: "...paper atop table includes paper where it is on top of table, and table otherwise; area beyond the edge of the table is out of the picture."[1]
+<feComposite operator="xor" in="A" in2="B"/>
+The result is the part of A that is outside B together with the part of B that is outside A.
+<feComposite in="A" in2="B" operator="arithmetic" .../>
+k1 * A * B + k2 * A + k3 * B + k4
+
+<feComposite in="A" in2="B" result="combined"
+    k1="0" k2="0.30" k3="0.70" k4="0"/>
+
 -->
 <filter id="brightness-shadow" filterUnits="objectBoundingBox">
     <feImage xlink:href="sky.png" result="sky"/>
