@@ -2,7 +2,7 @@
 <!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.0//EN"
     "http://www.w3.org/TR/2001/REC-SVG-20010904/DTD/svg10.dtd">
   
-<svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="100%" height="100%">
+<svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="100%" height="1500">
 <title>Animation</title>
 <rect x="10" y="10" width="200" height="20" stroke="black" fill="none">     [1]
     <animate     
@@ -26,7 +26,7 @@
         from="1" to="0.25" begin="3s" dur="3s" fill="freeze"/>
     </rect>
 </g>
-
+<!-- h, min, s, ms -->
 <g transform="translate(10,150)">
     <rect x="10" y="10" width="20" height="20"
         style="stroke: black; fill: #cfc;">
@@ -41,5 +41,151 @@
         <animate attributeName="r" attributeType="XML"
             begin="2s" dur="4s" from="20" to="50" fill="freeze"/>
     </circle>
+</g>
+
+<g transform="translate(10,300)">
+    <circle cx="60" cy="60" r="30" style="fill: #f9f; stroke: gray;">
+    <animate id="c1" attributeName="r" attributeType="XML"
+        begin="0s" dur="4s" from="30" to="10" fill="freeze"/>
+</circle>
+
+<circle cx="120" cy="60" r="10" style="fill: #9f9; stroke: gray;">
+    <animate attributeName="r" attributeType="XML"
+        begin="c1.end" dur="4s" from="10" to="30" fill="freeze"/>
+</circle>
+    
+</g>
+<g transform="translate(200,300)">
+<circle cx="60" cy="60" r="30" style="fill: #f9f; stroke: gray;">
+    <animate id="c1" attributeName="r" attributeType="XML"
+        begin="0s" dur="4s" from="30" to="10" fill="freeze"/>
+</circle>
+
+<circle cx="120" cy="60" r="10" style="fill: #9f9; stroke: gray;">
+    <animate attributeName="r" attributeType="XML"
+        begin="c1.begin+1.25s" dur="4s" from="10" to="30" fill="freeze"/>
+</circle>
+</g>
+<g transform="translate(400,300)">
+<circle cx="60" cy="60" r="30" style="fill: #f9f; stroke: gray;">
+    <animate id="c1" attributeName="r" attributeType="XML"
+        begin="0s" dur="4s" from="30" to="10" fill="freeze"/>
+</circle>
+
+<circle cx="120" cy="60" r="10" style="fill: #9f9; stroke: gray;">
+    <animate attributeName="r" attributeType="XML"
+    begin="6s" dur="12s" end="9s"
+    from="10" to="100" fill="freeze"/>
+</circle>
+</g>
+
+<g transform="translate(0,500)">
+    <!-- repeatCount=indefinite  -->
+<circle cx="60" cy="60" r="30" style="fill: none; stroke: red;">
+    <animate attributeName="cx" attributeType="XML"
+        begin="0s" dur="5s" repeatCount="2"
+        from="60" to="260" fill="freeze"/>
+</circle>
+
+<circle cx="260" cy="130" r="30" style="fill: #ccf; stroke: black;">
+    <animate attributeName="cx" attributeType="XML"
+        begin="0s" dur="5s" repeatDur="8s"
+        from="260" to="60" fill="freeze"/>
+</circle>
+</g>
+<g transform="translate(400,500)">
+    <circle cx="60" cy="60" r="30"
+        style="fill: none; stroke: red;">
+        <animate id="circleA" attributeName="cx" attributeType="XML"
+            begin="0s" dur="5s" repeatCount="3"
+            from="60" to="260" fill="freeze"/>
+    </circle>
+
+    <rect x="0" y="100" width="60" height="60"
+        style="fill: #ccf; stroke: black;">
+        <animate attributeName="x" attributeType="XML"
+            begin="circleA.repeat(0)" dur="5s"
+            from="0" to="250" fill="freeze"/>
+    </rect>
+</g>
+<g transform="translate(400,700)">
+    <circle cx="60" cy="60" r="30" style="fill: #ff9; stroke: gray;">
+        <animate id="c1" attributeName="r" attributeType="XML"
+            begin="0s" dur="4s" from="30" to="0" fill="freeze"/>
+    </circle>
+
+    <text text-anchor="middle" x="60" y="60" style="visibility: hidden;">
+        <set attributeName="visibility" attributeType="CSS"
+            to="visible" begin="c1.end" dur="2s" fill="freeze"/>  
+        All gone!
+    </text>
+</g>
+
+<g transform="translate(0,800)">
+    <circle cx="60" cy="60" r="30"
+	style="fill: #ff9; stroke: gray; stroke-width: 10;">
+    <animateColor attributeName="fill"
+        begin="2s" dur="4s" from="#ff9" to="red" fill="freeze"/>
+    <animateColor attributeName="stroke"
+        begin="2s" dur="4s" from="gray" to="blue" fill="freeze"/>
+    </circle>
+</g>
+<g transform="translate(500,800)">
+    <g transform="translate(120,60)">
+    <rect x="-10" y="-10" width="20" height="20"
+        style="fill: #ff9; stroke: black;">
+        <animateTransform attributeType="XML"
+            attributeName="transform" type="scale"
+            from="1" to="4 2"
+            begin="0s" dur="4s" fill="freeze"/>
+        Stretch
+    </rect>
+    </g>
+    
+    <rect x="-10" y="-10" width="20" height="20"
+    style="fill: #ff9; stroke: black;">
+    <animateTransform attributeName="transform" attributeType="XML"
+        type="scale" from="1" to="4 2"
+        additive="sum" begin="0s" dur="4s" fill="freeze"/>
+    <animateTransform attributeName="transform" attributeType="XML"
+        type="rotate" from="0" to="45"
+        additive="sum" begin="0s" dur="4s" fill="freeze"/>
+</rect>
+
+</g>
+<g transform="translate(0,900)">
+        <!-- show the path along which the triangle will move -->
+    <path d="M50,125 C 100,25 150,225, 200, 125"
+            style="fill: none; stroke: blue;"/>
+
+    <!-- Triangle to be moved along the motion path.
+    It is defined with an upright orientation with the base of
+    the triangle centered horizontally just above the origin. -->
+    <path d="M-10,-3 L10,-3 L0,-25z" style="fill: yellow; stroke: red;">
+        <animateMotion
+            path="M50,125 C 100,25 150,225, 200, 125" rotate="auto"
+            dur="6s" fill="freeze" repeatDur="indefinite"/>
+    </path>
+</g>
+<g transform="translate(300,900)">
+    <path id="cubicCurve" d="M50,125 C 100,25 150,225, 200, 125"
+        style="fill: none; stroke: blue;"/>
+
+    <path d="M-10,-3 L10,-3 L0,-25z" style="fill: yellow; stroke: red;" >
+        <animateMotion dur="6s" rotate="auto" fill="freeze">
+            <mpath xlink:href="#cubicCurve"/>
+        </animateMotion>
+    </path>
+</g>
+<g transform="translate(0,1000)">
+    <a xlink:href="cat.svg">
+        <text x="100" y="30" style="font-size: 12pt;">Cat</text>
+    </a>
+
+    <a xlink:href="http://www.w3.org/SVG/">
+        <circle cx="50" cy="70" r="20" style="fill: red;"/>
+        <rect x="75" y="50" width="40" height="40" style="fill: green;"/>
+        <path d="M120 90, 140 50, 160 90 Z" style="fill: blue;"/>
+    </a>
 </g>
 </svg>
